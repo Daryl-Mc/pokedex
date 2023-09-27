@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Up({onClick}) {
+export default function AddBtn({onClick}) {
   return (
     <button onClick={onClick}> &gt; </button>
   )

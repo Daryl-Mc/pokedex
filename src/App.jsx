@@ -2,19 +2,15 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import axios from "axios"
 import Dex from './components/Dex'
-import Up from './components/Up'
+import AddBtn from './components/AddBtn'
+import SubBtn from './components/SubBtn'
 
 function App() {
   const url = "https://pokeapi.co/api/v2/pokemon/"
   
   const [loading, setLoading] = useState(true)
   const [pokemon, getPokemon] = useState()
-  const [dexNumber, updateDexNum] = useState(1)
-
-  function updateDex(){
-    console.log("updated");
-    updateDexNum(a => a + 1);
-  }
+  const [dexNumber, setDexNum] = useState(1)
 
   useEffect(() =>{
     setLoading(true)
@@ -22,14 +18,22 @@ function App() {
       setLoading(false)
       getPokemon(res.data)
     })
-  }, [])
+  }, [dexNumber]) // This array checks for values that get updated, 
+  //reruns the effect everytime something in this array changes. 
+
+  function updateDex(){
+    setDexNum(a => a + 1); // Updates the dexNumber
+  }
 
   if (loading) return "loading..."
 
+  //Next step is adding functionality to the subtract button
+  //Then figure out a search bar!
   return (
     <>
-      <Dex pokemon = {pokemon}/>
-      <Up onClick={updateDex}/>
+      <SubBtn/>
+      <Dex pokemon = {pokemon}/> 
+      <AddBtn onClick = {updateDex}/>
     </>
   )
 }
