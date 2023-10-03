@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function SubBtn() {
+export default function SubBtn({Clicked}) {
   return (
-    <button> &lt; </button>
+    <button onClick={Clicked}> &lt; </button>
   )
 }

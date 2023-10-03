@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function AddBtn({onClick}) {
+export default function AddBtn({Clicked}) {
   return (
-    <button onClick={onClick}> &gt; </button>
+    <button onClick={Clicked}> &gt; </button>
   )
 }
